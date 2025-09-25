@@ -48,6 +48,12 @@ nav ul li a:hover {
   color: #ffffff;
 }
 
+nav ul li a.active {
+  background-color: #f3e0c9;
+  color: #2e1b0e;
+  border-radius: 5px;
+}
+
 main {
   padding: 20px;
   max-width: 960px;
