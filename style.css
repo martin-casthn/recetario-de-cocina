@@ -1,29 +1,66 @@
+/* Estilos Generales y Variables de Color */
+:root {
+  --bg-color: #f3e0c9;
+  --text-color: #4a2a16;
+  --header-bg: #d8a070;
+  --header-text: #2e1b0e;
+  --nav-bg: #2e1b0e;
+  --nav-text: #f3e0c9;
+  --main-bg: #ffffff;
+  --border-color: #d8a070;
+  --card-bg: #fcf6e7;
+  --link-color: #4a2a16;
+  --active-nav-bg: #f3e0c9;
+  --active-nav-text: #2e1b0e;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --header-bg: #8B0000;
+  --header-text: #f1f1f1;
+  --nav-bg: #1a1a1a;
+  --nav-text: #DC143C;
+  --main-bg: #2c2c2c;
+  --border-color: #8B0000;
+  --card-bg: #3a3a3a;
+  --link-color: #DC143C;
+  --active-nav-bg: #DC143C;
+  --active-nav-text: #ffffff;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: #f3e0c9;
-  color: #4a2a16;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Header y Navegación */
 header {
-  background-color: #d8a070;
+  background-color: var(--header-bg);
+  color: var(--header-text);
   padding: 20px;
   text-align: center;
+  position: relative; /* Para posicionar el toggle */
 }
 
 header h1 {
-  color: #2e1b0e;
+  color: var(--header-text);
   font-family: "Georgia", serif;
   font-size: 2.5em;
   margin-bottom: 10px;
 }
 
 nav {
-  background-color: #2e1b0e;
+  background-color: var(--nav-bg);
   padding: 10px 0;
 }
 
@@ -38,78 +75,66 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #f3e0c9;
+  color: var(--nav-text);
   text-decoration: none;
   font-weight: bold;
   padding: 5px 10px;
 }
 
 nav ul li a:hover {
-  color: #ffffff;
+  color: #ffffff; /* Un blanco genérico funciona bien aquí */
 }
 
 nav ul li a.active {
-  background-color: #f3e0c9;
-  color: #2e1b0e;
+  background-color: var(--active-nav-bg);
+  color: var(--active-nav-text);
   border-radius: 5px;
 }
 
+/* Contenido Principal */
 main {
   padding: 20px;
   max-width: 960px;
   margin: 20px auto;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--main-bg);
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 section {
   margin-bottom: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #d8a070;
+  border-bottom: 1px solid var(--border-color);
 }
 
 section:last-of-type {
   border-bottom: none;
 }
 
-h2 {
-  color: #4a2a16;
+h2, h3 {
+  color: var(--text-color);
   font-family: "Georgia", serif;
-  font-size: 2em;
   margin-bottom: 15px;
 }
 
-h3 {
-  color: #4a2a16;
-  font-family: "Georgia", serif;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
 
 p {
   margin-bottom: 1em;
 }
 
+/* Componentes */
 .receta-destacada {
-  background-color: #fcf6e7;
-  border: 1px solid #d8a070;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 20px;
   padding: 15px;
   overflow: auto;
 }
 
-.receta-destacada img {
-  max-width: 150px;
-  height: auto;
-  margin-right: 15px;
-  float: left;
-  border-radius: 5px;
-  border: 1px solid #d8a070;
-}
-
 .receta-destacada a {
-  color: #4a2a16;
+  color: var(--link-color);
   text-decoration: none;
   font-weight: bold;
 }
@@ -118,15 +143,16 @@ p {
   text-decoration: underline;
 }
 
-ul,
-ol {
-  margin-left: 25px;
-  margin-bottom: 1em;
+.imagen-receta-principal, .receta-destacada img {
+  border: 3px solid var(--border-color);
+  border-radius: 10px;
 }
 
-ul li,
-ol li {
-  margin-bottom: 5px;
+.receta-destacada img {
+  max-width: 150px;
+  height: auto;
+  margin-right: 15px;
+  float: left;
 }
 
 .imagen-receta-principal {
@@ -134,26 +160,10 @@ ol li {
   max-width: 600px;
   height: auto;
   margin: 20px auto;
-  border: 3px solid #d8a070;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-.boton-enviar {
-  background-color: #d8a070;
-  color: #2e1b0e;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.boton-enviar:hover {
-  background-color: #c08c5c;
-}
-
+/* Formularios */
 label {
   display: block;
   margin-top: 10px;
@@ -167,40 +177,86 @@ textarea {
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #d8a070;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: var(--main-bg);
+  color: var(--text-color);
 }
 
+.boton-enviar {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-enviar:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
 footer {
-  background-color: #d8a070;
-  color: #4a2a16;
+  background-color: var(--header-bg);
+  color: var(--text-color);
   text-align: center;
   padding: 15px;
   margin-top: 40px;
 }
 
-.imagenes-lado-a-lado {
-  display: block;
-  margin: 20px 0;
+/* Toggle Switch para Dark Mode */
+.dark-mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
-.imagenes-lado-a-lado img {
-  display: block;
-  margin: 0 auto 20px auto;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  border: 2px solid #a5d6a7;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-figure {
-  text-align: center;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-figure figcaption {
-  margin-top: 10px;
-  font-size: 1.1em;
-  text-align: center;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #DC143C; /* Crimson */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
 }
